@@ -1,4 +1,4 @@
-# Ultragic Syntax & Architecture Cheat Sheet
+# Ultragic Syntax & Architecture Spec Sheet
 
 Welcome to the official development specification and syntax sheet for **Ultragic**—a language designed around efficient scoping, automatic state tracking, and fast data pipelining. 
 
