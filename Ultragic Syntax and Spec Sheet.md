@@ -97,8 +97,8 @@ All logical blocks wrap their operations and conclude explicitly with the `end` 
 ### Boolean (`!` acts as the negative/inversion modifier)
 | Operator | Action | Operator | Action |
 | :---: | --- | :---: | --- |
-| `&&` | Logical AND | `|`| | Logical OR |
-| `~~` | Logical XOR | `!` | Logical NOT (e.g., `!a no b`) |
+| `&&` | Logical AND | `\|\|` | Logical OR |
+| `~~` | Logical XOR | `!` | Logical NOT (Note: `!a, no b`) |
 | `<` | Less Than | `>` | Greater Than |
 | `=` | Equal To | `!=` | Not Equal To |
 | `<=` | Less Than or Equal | `>=` | Greater Than or Equal |
@@ -109,7 +109,7 @@ All logical blocks wrap their operations and conclude explicitly with the `end` 
 ## 5. Advanced Toolsets
 
 ### LCAF (Looping Conditional Automatic Function)
-LCAF mechanics run continuously and quietly in the background without blocking program threads or affecting FPS. They act like logical "spies" waiting for variables to hit explicit states.
+LCAF mechanics run continuously and quietly in the background without blocking program threads or affecting FPS. They act like logical "spies" waiting for variables to hit explicit states. But call them LCAF or their specific name.
 
 * **`when` (Background Loop):** `when <condition:true> .... end` — Automatically executes its block in the background whenever the condition flips to true.
 * **`on` (Interaction Listener):** `on <interaction_name> <inline_code>` — Event listener driven by interaction hooks.
@@ -117,14 +117,14 @@ LCAF mechanics run continuously and quietly in the background without blocking p
 * **`.func` (Context/Object Function):** `.func <name> (object(s)) .... end` — Contextual functions. Objects must exist or belong to a valid parent context.
 
 ### CAP (Condition and Assignment Preset)
-CAP is a component of the LCAF concept that lets you write state-checking routines that fire automatically during assignment logic. Assigning values to a CAP condition variable returns an evaluation boolean directly, which can be used for loops, ifs, or elifs.
-* **Conditional Lock:** `@? <condition>`
-* **Assignment Set:** `@? <assignment of a var>`
+CAP is a component of the LCAF concept that lets you write state-checking routines that fire automatically during assignment logic. Assigning values to a CAP cond variable returns an evaluation boolean directly, which can be used for loops, ifs, or elifs.
+* **Varlock / Assignment Condition/ cond:** `@? <condition>`
+* **Varset:** `@? <assignment of a var>`
 
 ### Tailing & Formatting
 * **Inline Comments:** `// Single line comment`
 * **Block Comments:** `/* Multiline comment */`
-* **Output:** `dis(...)` and `print(...)` process structural output data.
+* **Output:** `dis(...)` and `print(...)` prints given data to the console in the next line. `disnl` prints in the current line
 * **Tailing Syntax (`:`):** `<object>:<function>` implicitly passes the `<object>` forward as the very first argument of the `<function>`.
 
 ---
@@ -172,15 +172,15 @@ Allows declaring self-contained logic loops wrapped tightly around isolated or l
 Designed to quickly process complete guessing-style interactive flows inside a single standalone statement block.
 ```javascript
 ask(
-    Question,
+    Question
     op:Condition,
     op:thanks/congrats,
     op:fail_safe_message,      // Fallback message when conditions fail (like else)
     op:re_ask,                 // Clears historical question data and switches to fail sequence
     op:clear_question,         // Flushes current outputs instantly upon receiving correct input
-    op:fail_message_1,
+    op:fail_message_1
     op:condition,              // Condition to reply with fail message 1 when met
-    op:fail_message_2,
+    op:fail_message_2
     op:condition,              // Condition to reply with fail message 2 when met
     ...
 )
