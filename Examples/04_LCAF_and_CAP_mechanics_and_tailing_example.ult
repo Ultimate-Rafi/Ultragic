@@ -1,0 +1,34 @@
+player = {
+	name = "Rafi"
+	hp = 60
+	max_hp = 200
+}
+
+func heal(person, amount)
+	person.hp++amount
+end
+
+@? low_hp = player.hp <= 100 // whenever player is below 100 hp the low hp becomes true
+
+.func enemy_hit(player) // depending whether the player is low hp or not the enemy deals 1 or 5 hp per 0.15 or 0.1 second
+	if low_hp
+		player.hp--
+		wait(0.15 s) // numbers can have unit name after them e.g, 0.3s
+	else
+		player.hp--5
+		wait(0.1 s)
+	end
+end
+
+when low_hp // when the player is at low hp, heals him by 10 per second
+	person:heal(10)
+	wait(1 s)
+end
+
+on left_clk() person:heal(10)
+
+when player.hp >= player.max_hp
+	print("the player is at max hp")
+	dis("the game is over")
+	quit // stops the program
+end

@@ -1,0 +1,12 @@
+// A guessing game
+ask(
+	"choose a number from 1 - 100.\nGuess: "
+	ans == rng(1,100),
+	"you are correct, thanks for playing",
+	"please choose an integer.\nGuess",
+	1,1,
+	"too low\nGuess: "
+	ans < rng.last,
+	"too high\nGuess: "
+	ans > rng.last
+)

@@ -1,0 +1,17 @@
+// current scope: s1
+
+g global_var = "it is a global variable" // a variable in external scope (s0)
+l local_var = "it is a local variable" // a variable in current scope (s1)
+
+l num = 5
+
+if 3 < 10 then
+	// current scope: s2
+	r num = 0 // makes a copy of num and updates the value to 0 in current scope (s2)
+	for i, 10, 1, 1
+		// current scope: s3
+		num++ // updates the num of s2
+	end
+end // the num of s1 gets updated to the value of the num of s2
+
+print(num)	// Output:10
