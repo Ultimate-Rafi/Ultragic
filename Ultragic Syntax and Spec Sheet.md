@@ -66,7 +66,7 @@ All logical blocks wrap their operations and conclude explicitly with the `end` 
 * **NUMBER:** Unified type handling Booleans, Integers, and Decimals.
 * **TEXT:** Declared using string literals matching `'/" <text> '/"`.
 
-### Data Tree Types
+### Tree Data Types
 * **Array (`[]`):** Inline, sequentially auto-indexed lists starting at position `0`.
 * **Table (`{}`):** Multiline, auto-indexed structures starting from `0` that can also be manually keyed.
 * **Merging:** Use the `..` operator to join texts or merge tables together: `<text/table_1>..<text/table_2>`.
@@ -100,9 +100,20 @@ All logical blocks wrap their operations and conclude explicitly with the `end` 
 | `&&` | Logical AND | `\|\|` | Logical OR |
 | `~~` | Logical XOR | `!` | Logical NOT (Note: `!a, no b`) |
 | `<` | Less Than | `>` | Greater Than |
-| `=` | Equal To | `!=` | Not Equal To |
+| `=` | Equal To | `!=` | Not Equal To
 | `<=` | Less Than or Equal | `>=` | Greater Than or Equal |
 | `!<` | Not Less Than | `!>` | Not Greater Than |
+
+### 🔢 Compound Assignment Operators
+To streamline variable modification, Ultragic supports standard compound assignment expressions. These act as high-readability shorthand structures for running mathematical operations directly on an existing variable state.
+
+| Shorthand Syntax | Symbol | Core Operation | Equivalent Expression |
+| :--- | :---: | :--- | :--- |
+| `score ++ 5` | `++` | Addition Assignment | `score = score + 5` |
+| `health -- 10` | `--` | Subtraction Assignment | `health = health - 10` |
+| `factor *= 2` | `*=` | Multiplication Assignment | `factor = factor * 2` |
+| `pool /= 4` | `/=` | Division Assignment | `pool = pool / 4` |
+| `name .= " addition"`| `.=` | Merge Assignment | `name = name .. " addition"`|
 
 ---
 
@@ -126,7 +137,6 @@ CAP is a component of the LCAF concept that lets you write state-checking routin
 * **Block Comments:** `/* Multiline comment */`
 * **Output:** `dis(...)` and `print(...)` prints given data to the console in the next line. `disnl` prints in the current line
 * **Tailing Syntax (`:`):** `<object>:<function>` implicitly passes the `<object>` forward as the very first argument of the `<function>`.
-
 ---
 
 ## 6. Built-In Library API
@@ -158,15 +168,19 @@ CAP is a component of the LCAF concept that lets you write state-checking routin
 ### Cursor Library
 * *Yet to be written / designed*
 
+### Anonymous Functions
+* `wait(time unit)`: Pausess the execution flow for the specific thing for the specified time. Waits.
+### Special Keywords
+* `quit`: Stops the program
+* `break`: stops the last loop even LCAF
+* `return <op:item(s)>`: stops the function and return the item(s)
 ---
 
 ## 7. Expert-Layer Features
 
 ### F.D. (Function with Database)
-Allows declaring self-contained logic loops wrapped tightly around isolated or local structural data definitions.
-```javascript
-<op:scope> func <name> (<mode_name(s)>) {<entry(s)>} .... end
-```
+A Function with its database and a table as an api to interact with the database
+* *Yet to be written / designed*
 
 ### The `ask()` Mechanics (Elastic Logic Mode)
 Designed to quickly process complete guessing-style interactive flows inside a single standalone statement block.
