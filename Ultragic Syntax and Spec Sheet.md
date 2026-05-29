@@ -97,8 +97,8 @@ All logical blocks wrap their operations and conclude explicitly with the `end` 
 ### Boolean (`!` acts as the negative/inversion modifier)
 | Operator | Action | Operator | Action |
 | :---: | --- | :---: | --- |
-| `&&` | Logical AND | `||` | Logical OR |
-| `~~` | Logical XOR | `!` | Logical NOT (e.g., `!ano b`) |
+| `&&` | Logical AND | `|`| | Logical OR |
+| `~~` | Logical XOR | `!` | Logical NOT (e.g., `!a no b`) |
 | `<` | Less Than | `>` | Greater Than |
 | `=` | Equal To | `!=` | Not Equal To |
 | `<=` | Less Than or Equal | `>=` | Greater Than or Equal |
