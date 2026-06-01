@@ -339,11 +339,21 @@
             <p>All logical blocks wrap their operations and conclude explicitly with the <code>end</code> keyword. Multiple lines within a block can contain 0 to infinite statements.</p>
 
             <h3>Loops</h3>
-            <ul>
-                <li><strong>For:</strong> <code>for &lt;var_name&gt;, &lt;to&gt;, &lt;from&gt;, &lt;step&gt; .... end</code></li>
-                <li><strong>While:</strong> <code>while &lt;condition:true&gt; .... end</code></li>
-                <li><strong>Repeat:</strong> <code>repeat .... until &lt;condition:false&gt;</code></li>
-            </ul>
+            
+            <h4>For Loop</h4>
+            <pre><code>for &lt;var_name&gt;, &lt;to&gt;, &lt;from&gt;, &lt;step&gt;
+    ....
+end</code></pre>
+
+            <h4>While Loop</h4>
+            <pre><code>while &lt;condition:true&gt;
+    ....
+end</code></pre>
+
+            <h4>Repeat Loop</h4>
+            <pre><code>repeat
+    ....
+until &lt;condition:false&gt;</code></pre>
 
             <h3>Conditionals</h3>
             <pre><code>if &lt;condition:true&gt; 
@@ -355,9 +365,9 @@ else
 end</code></pre>
 
             <h3>Functions</h3>
-            <ul>
-                <li><strong>Declaration:</strong> <code>func &lt;name&gt; (&lt;argument(s)&gt;) .... end</code></li>
-            </ul>
+            <pre><code>func &lt;name&gt; (&lt;argument(s)&gt;)
+    ....
+end</code></pre>
         </section>
 
         <!-- Data Types -->
@@ -647,7 +657,7 @@ end</code></pre>
         <!-- Examples Section -->
         <section id="examples">
             <h2>Quick Examples</h2>
-            <p>Explore how Ultragic works:</p>
+            <p>Explore how Ultragic works with these practical examples:</p>
             <div class="docs-links">
                 <div class="docs-link">
                     <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/01_hello_world.ult" target="_blank">📝 Hello World</a>
