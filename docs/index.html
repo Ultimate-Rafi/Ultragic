@@ -45,14 +45,16 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            overflow-x: auto;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 1.5rem;
+            margin: 0 1rem;
             font-weight: 500;
             transition: color 0.3s;
+            display: inline-block;
         }
 
         nav a:hover {
@@ -81,6 +83,20 @@
             padding-bottom: 0.5rem;
         }
 
+        section h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        section h4 {
+            color: #667eea;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
         .status {
             background: #fff3cd;
             border-left: 4px solid #ffc107;
@@ -93,56 +109,59 @@
             color: #856404;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem 0;
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .feature-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.2);
-        }
-
-        .feature-card h3 {
-            color: #667eea;
+        li {
             margin-bottom: 0.5rem;
+            line-height: 1.8;
         }
 
-        .examples {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d73a49;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        pre code {
+            background: none;
+            color: #333;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin: 1rem 0;
         }
 
-        .example-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid #667eea;
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
         }
 
-        .example-item a {
-            color: #667eea;
-            text-decoration: none;
+        table th {
+            background: #667eea;
+            color: white;
             font-weight: bold;
-            transition: color 0.3s;
         }
 
-        .example-item a:hover {
-            color: #764ba2;
-            text-decoration: underline;
+        table tr:nth-child(even) {
+            background: #f9f9f9;
         }
 
         .cta-buttons {
@@ -186,6 +205,41 @@
             color: white;
         }
 
+        .note {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .note strong {
+            color: #1565c0;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
         .docs-links {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -213,37 +267,6 @@
             font-weight: bold;
             display: block;
         }
-
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            color: #d73a49;
-        }
-
-        .highlight {
-            background: #fff3cd;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-        }
     </style>
 </head>
 <body>
@@ -254,54 +277,370 @@
 
     <nav>
         <a href="#about">About</a>
-        <a href="#features">Features</a>
+        <a href="#scope">Scope Architecture</a>
+        <a href="#control">Control Flow</a>
+        <a href="#types">Data Types</a>
+        <a href="#operators">Operators</a>
+        <a href="#lcaf">LCAF & CAP</a>
+        <a href="#api">Built-in API</a>
+        <a href="#expert">Expert Features</a>
         <a href="#examples">Examples</a>
-        <a href="#documentation">Documentation</a>
-        <a href="#contribute">Contribute</a>
     </nav>
 
     <div class="container">
         <!-- About Section -->
         <section id="about">
             <h2>About Ultragic</h2>
-            <p>Ultragic is an <span class="highlight">experimental programming language</span> built on Lua by <strong>Kazi Muhtadiul Huda (Rafi)</strong>.</p>
+            <p>Welcome to the official development specification and syntax sheet for <strong>Ultragic</strong>—a language designed around efficient scoping, automatic state tracking, and fast data pipelining.</p>
             
             <div class="status">
-                <strong>⚠️ Status: In Development</strong>
-                <p>This project is in its infdev/theory phase. Syntax and features are subject to change. Not production-ready yet.</p>
+                <strong>⚠️ Status: Infdev (In Development)</strong>
+                <p>This project is in its theory/infdev phase. Syntax and features are subject to change.</p>
             </div>
 
-            <p style="margin-top: 1rem;">Ultragic combines powerful language design concepts with innovative mechanics to create a unique programming experience. Whether you're interested in language design, scripting, or experimental features, Ultragic offers something fresh.</p>
+            <p style="margin-top: 1rem;">Ultragic is an experimental programming language written in Lua by <strong>Kazi Muhtadiul Huda (Rafi)</strong>, combining powerful language design concepts with innovative mechanics.</p>
         </section>
 
-        <!-- Features Section -->
-        <section id="features">
-            <h2>Key Features</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>🔍 Scope System</h3>
-                    <p>Advanced scope management with modifiers (<code>g</code>, <code>l</code>, <code>r</code>) for precise variable control across nested scopes.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>⚡ LCAF Mechanics</h3>
-                    <p>Logic Continuous Auto-Fire system that monitors variables and automatically triggers actions based on state changes.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎯 CAP Assignment</h3>
-                    <p>Conditional Assignment Protocol that evaluates conditions during assignment for powerful conditional logic.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>❓ Ask System</h3>
-                    <p>Interactive input system with conditional branching for user interactions and game logic.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📍 Tailing Syntax</h3>
-                    <p>Innovative tailing syntax for concise and expressive code patterns.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎮 Event-Driven</h3>
-                    <p>Built-in support for event handlers and continuous monitoring with <code>when</code> and <code>on</code> keywords.</p>
-                </div>
+        <!-- Scope Architecture -->
+        <section id="scope">
+            <h2>1. Scope & Variable Architecture</h2>
+            
+            <p>Ultragic handles variables using a <strong>scoped table stack system</strong> (s₀, s₁, s₂, ..., sₙ).</p>
+
+            <h3>Scope Levels</h3>
+            <ul>
+                <li><strong><code>s0</code> (External Global)</strong> — The root table accessible outside the current file.</li>
+                <li><strong><code>s1</code> (Internal Global)</strong> — The table accessible only inside the current file.</li>
+                <li><strong><code>s2</code> to <code>s_n</code> (Dynamic Scopes)</strong> — Local execution blocks (functions, loops) that are dynamically created and destroyed according to standard scope mechanics.</li>
+            </ul>
+
+            <h3>Scope Modifiers & Lifecycle</h3>
+            <ul>
+                <li><strong><code>gV</code> (Global to Scope V)</strong> — Searches backward through the stack from the current scope to target a specific static scope level (e.g., <code>g1</code>, <code>g2</code>, <code>g3</code>).</li>
+                <li><strong><code>dV</code> (Delete from Scope V)</strong> — Searches backward through the stack to explicitly wipe a variable from memory at that specific scope layer (e.g., <code>d1</code>, <code>d2</code>, <code>d3</code>).</li>
+                <li><strong><code>r</code> (Refer Mode)</strong> — Used to "alias" a variable from a lower scope (e.g., s₁) into a deeply nested scope (e.g., s₅) so that the interpreter can find it faster.</li>
+            </ul>
+
+            <h3>Variable Operations</h3>
+            <pre><code>// Variable Creation & Manipulation
+&lt;op:scope(l, g, gV)/mode(r)&gt; &lt;name&gt; = &lt;value&gt;  // Set / Initialize
+&lt;mode:d/dV&gt; &lt;name&gt;                            // Delete / Wipe
+&lt;name&gt; = &lt;value&gt;                              // Update existing
+
+// Example Callings
+..... &lt;name&gt;.....                             // Variable invocation
+..... &lt;name&gt;(&lt;argument(s)&gt;).....               // Function invocation</code></pre>
+        </section>
+
+        <!-- Control Flow -->
+        <section id="control">
+            <h2>2. Basic Control Flow</h2>
+            
+            <p>All logical blocks wrap their operations and conclude explicitly with the <code>end</code> keyword. Multiple lines within a block can contain 0 to infinite statements.</p>
+
+            <h3>Loops</h3>
+            <ul>
+                <li><strong>For:</strong> <code>for &lt;var_name&gt;, &lt;to&gt;, &lt;from&gt;, &lt;step&gt; .... end</code></li>
+                <li><strong>While:</strong> <code>while &lt;condition:true&gt; .... end</code></li>
+                <li><strong>Repeat:</strong> <code>repeat .... until &lt;condition:false&gt;</code></li>
+            </ul>
+
+            <h3>Conditionals</h3>
+            <pre><code>if &lt;condition:true&gt; 
+    .... 
+elif &lt;condition:true&gt; 
+    .... 
+else 
+    .... 
+end</code></pre>
+
+            <h3>Functions</h3>
+            <ul>
+                <li><strong>Declaration:</strong> <code>func &lt;name&gt; (&lt;argument(s)&gt;) .... end</code></li>
+            </ul>
+        </section>
+
+        <!-- Data Types -->
+        <section id="types">
+            <h2>3. Data Types & Operators</h2>
+
+            <h3>Simple Data Types</h3>
+            <ul>
+                <li><strong>BIT</strong> — Logical states where <code>true</code> or <code>1</code> represents truth, and <code>false</code> or <code>0</code> represents falsity.</li>
+                <li><strong>NIL</strong> — <code>nil</code> (Represents emptiness/null).</li>
+                <li><strong>BINT (Boolean Integer)</strong> — An optimization where the sign bit of the integer is reused to determine boolean state (0 ≤ BINT → true, BINT &lt; 0 → false).</li>
+                <li><strong>NUMBER</strong> — Unified type handling Booleans, Integers, and Decimals.</li>
+                <li><strong>TEXT</strong> — Declared using string literals with quotes.</li>
+            </ul>
+
+            <h3>Tree Data Types</h3>
+            <ul>
+                <li><strong>Array <code>[]</code></strong> — Inline, sequentially auto-indexed lists starting at position 0.</li>
+                <li><strong>Table <code>{}</code></strong> — Multiline, auto-indexed structures starting from 0 that can also be manually keyed.</li>
+                <li><strong>Merging <code>..</code></strong> — Use to join texts or merge tables together: <code>&lt;text/table_1&gt;..&lt;text/table_2&gt;</code></li>
+            </ul>
+        </section>
+
+        <!-- Operators -->
+        <section id="operators">
+            <h2>4. Operator Tables</h2>
+
+            <h3>Arithmetic</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><code>+</code></td>
+                    <td>Addition</td>
+                </tr>
+                <tr>
+                    <td><code>-</code></td>
+                    <td>Subtraction</td>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>Multiplication</td>
+                </tr>
+                <tr>
+                    <td><code>/</code></td>
+                    <td>Division</td>
+                </tr>
+                <tr>
+                    <td><code>^</code></td>
+                    <td>Exponentiation</td>
+                </tr>
+            </table>
+
+            <h3>Bitwise (<code>?</code> acts as the negative/inversion modifier)</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><code>&</code></td>
+                    <td>And</td>
+                </tr>
+                <tr>
+                    <td><code>|</code></td>
+                    <td>Or</td>
+                </tr>
+                <tr>
+                    <td><code>~</code></td>
+                    <td>Xor</td>
+                </tr>
+                <tr>
+                    <td><code>?&</code></td>
+                    <td>Nand</td>
+                </tr>
+                <tr>
+                    <td><code>?|</code></td>
+                    <td>Nor</td>
+                </tr>
+                <tr>
+                    <td><code>?~</code></td>
+                    <td>Xnor</td>
+                </tr>
+            </table>
+
+            <h3>Boolean (<code>!</code> acts as the negative/inversion modifier)</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Action</th>
+                    <th>Operator</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><code>&&</code></td>
+                    <td>Logical AND</td>
+                    <td><code>||</code></td>
+                    <td>Logical OR</td>
+                </tr>
+                <tr>
+                    <td><code>~~</code></td>
+                    <td>Logical XOR</td>
+                    <td><code>!</code></td>
+                    <td>Logical NOT (Note: <code>!a, no b</code>)</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;</code></td>
+                    <td>Less Than</td>
+                    <td><code>&gt;</code></td>
+                    <td>Greater Than</td>
+                </tr>
+                <tr>
+                    <td><code>=</code></td>
+                    <td>Equal To</td>
+                    <td><code>!=</code></td>
+                    <td>Not Equal To</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;=</code></td>
+                    <td>Less Than or Equal</td>
+                    <td><code>&gt;=</code></td>
+                    <td>Greater Than or Equal</td>
+                </tr>
+                <tr>
+                    <td><code>!&lt;</code></td>
+                    <td>Not Less Than</td>
+                    <td><code>!&gt;</code></td>
+                    <td>Not Greater Than</td>
+                </tr>
+            </table>
+
+            <h3>Compound Assignment Operators</h3>
+            <p>To streamline variable modification, Ultragic supports standard compound assignment expressions. These act as high-readability shorthand structures for running mathematical operations directly on variables.</p>
+            <table>
+                <tr>
+                    <th>Shorthand Syntax</th>
+                    <th>Symbol</th>
+                    <th>Core Operation</th>
+                    <th>Equivalent Expression</th>
+                </tr>
+                <tr>
+                    <td><code>score ++ 5</code></td>
+                    <td><code>++</code></td>
+                    <td>Addition Assignment</td>
+                    <td><code>score = score + 5</code></td>
+                </tr>
+                <tr>
+                    <td><code>health -- 10</code></td>
+                    <td><code>--</code></td>
+                    <td>Subtraction Assignment</td>
+                    <td><code>health = health - 10</code></td>
+                </tr>
+                <tr>
+                    <td><code>factor *= 2</code></td>
+                    <td><code>*=</code></td>
+                    <td>Multiplication Assignment</td>
+                    <td><code>factor = factor * 2</code></td>
+                </tr>
+                <tr>
+                    <td><code>pool /= 4</code></td>
+                    <td><code>/=</code></td>
+                    <td>Division Assignment</td>
+                    <td><code>pool = pool / 4</code></td>
+                </tr>
+                <tr>
+                    <td><code>name .= " addition"</code></td>
+                    <td><code>.=</code></td>
+                    <td>Merge Assignment</td>
+                    <td><code>name = name .. " addition"</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- LCAF & CAP -->
+        <section id="lcaf">
+            <h2>5. Advanced Toolsets: LCAF & CAP</h2>
+
+            <h3>LCAF (Looping Conditional Automatic Function)</h3>
+            <p>LCAF mechanics run continuously and quietly in the background without blocking program threads or affecting FPS. They act like logical "spies" waiting for variables to hit explicit states.</p>
+
+            <h4>LCAF Components:</h4>
+            <ul>
+                <li><strong><code>when</code> (Background Loop)</strong> — <code>when &lt;condition:true&gt; .... end</code> — Automatically executes its block in the background whenever the condition flips to true.</li>
+                <li><strong><code>on</code> (Interaction Listener)</strong> — <code>on &lt;interaction_name&gt; &lt;inline_code&gt;</code> — Event listener driven by interaction hooks.</li>
+                <li><strong><code>main</code> (Core Thread Execution)</strong> — <code>main &lt;exit_interaction&gt; .... end</code> — Core execution thread.</li>
+                <li><strong><code>.func</code> (Context/Object Function)</strong> — <code>.func &lt;name&gt; (object(s)) .... end</code> — Contextual functions. Objects must exist or belong to a valid parent context.</li>
+            </ul>
+
+            <h3>CAP (Condition and Assignment Present)</h3>
+            <p>CAP is a component of the LCAF concept that lets you write state-checking routines that fire automatically during assignment logic. Assigning values to a CAP cond variable returns an evaluation boolean.</p>
+
+            <h4>CAP Syntax:</h4>
+            <ul>
+                <li><strong>Varlock / Assignment Condition</strong> — <code>@? &lt;condition&gt;</code></li>
+                <li><strong>Varset</strong> — <code>@? &lt;assignment of a var&gt;</code></li>
+            </ul>
+
+            <h3>Tailing & Formatting</h3>
+            <ul>
+                <li><strong>Inline Comments</strong> — <code>// Single line comment</code></li>
+                <li><strong>Block Comments</strong> — <code>/* Multiline comment */</code></li>
+                <li><strong>Output</strong> — <code>dis(...)</code> and <code>print(...)</code> print given data to the console in the next line. <code>disnl</code> prints in the current line.</li>
+                <li><strong>Tailing Syntax <code>:</code></strong> — <code>&lt;object&gt;:&lt;function&gt;</code> implicitly passes the <code>&lt;object&gt;</code> forward as the very first argument of the <code>&lt;function&gt;</code>.</li>
+            </ul>
+        </section>
+
+        <!-- Built-in API -->
+        <section id="api">
+            <h2>6. Built-In Library API</h2>
+
+            <h3>Math Library</h3>
+            <ul>
+                <li><code>sqrt(num)</code> — Returns the square root of a number.</li>
+                <li><code>cbrt(num)</code> — Returns the cube root of a number.</li>
+                <li><code>pi()</code> — Returns the constant value of π.</li>
+                <li><code>min(...)</code> — Evaluates AMAG (As Many As Given) inputs and returns the lowest value.</li>
+                <li><code>max(...)</code> — Evaluates AMAG inputs and returns the highest value.</li>
+                <li><code>avg(...)</code> — Computes the mathematical mean of AMAG inputs.</li>
+            </ul>
+
+            <h3>String Library</h3>
+            <ul>
+                <li><code>take(txt, from, op:to)</code> — Slices and returns a substring from the <code>from</code> index to the <code>to</code> index.</li>
+                <li><code>cut(txt, from, op:to)</code> — Drops a specified segment out of the target string.</li>
+                <li><code>search(txt, item)</code> — Searches a string and returns the starting index of the first matched element.</li>
+                <li><code>replace(txt, item_to_replace, item_to_replace_with)</code> — String replacement engine.</li>
+            </ul>
+
+            <h3>Display Library</h3>
+            <ul>
+                <li><code>dis(...)</code> — Outputs and adds visual elements to the active viewport layer based on the display mode.</li>
+                <li><code>live(obj)</code> — Flags a target object to actively listen for relational data modifications.</li>
+                <li><code>relatives(obj, op:new)</code> — Tracks down or mutates connected family elements mapped to a specific object.</li>
+                <li><code>animate(obj, time, op:mode)</code> — Pushes a timing-safe translation vector to a living object.</li>
+                <li><code>dis.mode(mode_name)</code> — Updates environmental rendering contexts. Supported modes: <code>console</code>, <code>console+</code> (with color profiles), <code>2d</code>, and <code>3d</code>.</li>
+                <li><code>dis.size(type)</code> — Reads viewport frame constraints using unit wrappers <code>px</code> (pixels) or <code>char</code> (total character blocks).</li>
+                <li><code>rmv(...)</code> — Tears down active components from the target view matrix (Requires minimum <code>console+</code> engine).</li>
+                <li><code>print(...)</code> — Pure, low-overhead fallback console writing stream (only works in console mode).</li>
+            </ul>
+
+            <h3>Cursor Library</h3>
+            <ul>
+                <li>Yet to be written / designed</li>
+            </ul>
+
+            <h3>Anonymous Functions & Special Keywords</h3>
+            <ul>
+                <li><code>wait(time unit)</code> — Pauses the execution flow for the specified time.</li>
+                <li><code>quit</code> — Stops the program.</li>
+                <li><code>break</code> — Stops the last loop, even LCAF.</li>
+                <li><code>return &lt;op:item(s)&gt;</code> — Stops the function and returns the item(s).</li>
+            </ul>
+        </section>
+
+        <!-- Expert Features -->
+        <section id="expert">
+            <h2>7. Expert-Layer Features</h2>
+
+            <h3>F.D. (Function with Database)</h3>
+            <p>A Function with its database and a table as an API to interact with the database.</p>
+            <p><em>Yet to be written / designed</em></p>
+
+            <h3>The <code>ask()</code> Mechanics (Elastic Logic Mode)</h3>
+            <p>Designed to quickly process complete guessing-style interactive flows inside a single standalone statement block.</p>
+
+            <pre><code>ask(
+    Question
+    op:Condition,
+    op:thanks/congrats,
+    op:fail_safe_message,      // Fallback message when conditions fail (like else)
+    op:re_ask,                 // Clears historical question data and switches to fail sequence
+    op:clear_question,         // Flushes current outputs instantly upon receiving correct input
+    op:fail_message_1
+    op:condition,              // Condition to reply with fail message 1 when met
+    op:fail_message_2
+    op:condition,              // Condition to reply with fail message 2 when met
+    ...
+)</code></pre>
+
+            <div class="note">
+                <strong>Note:</strong> Use the reserved <code>ans</code> keyword when handling logical parameters inside evaluation fields (e.g., <code>ans &lt; 5</code>, <code>5 &lt; ans &lt; 8</code>, <code>#ans &lt; 10</code>).
             </div>
         </section>
 
@@ -309,67 +648,23 @@
         <section id="examples">
             <h2>Quick Examples</h2>
             <p>Explore how Ultragic works:</p>
-            <div class="examples">
-                <div class="example-item">
-                    <h3>Hello World</h3>
-                    <p>Get started with the basics</p>
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/01_hello_world.ult" target="_blank">View Example →</a>
-                </div>
-                <div class="example-item">
-                    <h3>Scope System</h3>
-                    <p>Learn scope management</p>
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/02_Scope_System.ult" target="_blank">View Example →</a>
-                </div>
-                <div class="example-item">
-                    <h3>Ask Mechanics</h3>
-                    <p>Interactive user input</p>
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/03_ask_example.ult" target="_blank">View Example →</a>
-                </div>
-                <div class="example-item">
-                    <h3>Advanced Features</h3>
-                    <p>LCAF, CAP & Tailing</p>
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/04_LCAF_and_CAP_mechanics_and_tailing_example.ult" target="_blank">View Example →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Documentation Section -->
-        <section id="documentation">
-            <h2>Documentation</h2>
-            <p>Dive deep into Ultragic's syntax and specifications:</p>
             <div class="docs-links">
                 <div class="docs-link">
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Ultragic%20Syntax%20and%20Spec%20Sheet.md" target="_blank">📖 Syntax & Spec Sheet</a>
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Complete language specification</p>
+                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/01_hello_world.ult" target="_blank">📝 Hello World</a>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Get started with the basics</p>
                 </div>
                 <div class="docs-link">
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/README.md" target="_blank">📝 GitHub Repository</a>
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Main project repository</p>
+                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/02_Scope_System.ult" target="_blank">🔍 Scope System</a>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Learn scope management</p>
                 </div>
                 <div class="docs-link">
-                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/LICENSE.md" target="_blank">⚖️ License</a>
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Community-friendly license</p>
+                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/03_ask_example.ult" target="_blank">❓ Ask Mechanics</a>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Interactive user input</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Contribute Section -->
-        <section id="contribute">
-            <h2>Get Involved</h2>
-            <p>Ultragic is an active development project. We welcome:</p>
-            <ul style="margin-left: 2rem; margin-top: 1rem;">
-                <li>💡 Feature suggestions and ideas</li>
-                <li>🐛 Bug reports and feedback</li>
-                <li>📝 Documentation improvements</li>
-                <li>🤝 Code contributions</li>
-                <li>🔧 Community modifications and forks</li>
-            </ul>
-
-            <p style="margin-top: 1.5rem;">All contributors will be credited and recognized. Popular community modifications may be adopted as official releases!</p>
-
-            <div class="cta-buttons">
-                <a href="https://github.com/Ultimate-Rafi/Ultragic" target="_blank" class="btn btn-primary">Visit GitHub Repository</a>
-                <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/CONTRIBUTORS.md" target="_blank" class="btn btn-secondary">See Contributors</a>
+                <div class="docs-link">
+                    <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/Examples/04_LCAF_and_CAP_mechanics_and_tailing_example.ult" target="_blank">⚡ LCAF & CAP</a>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Advanced features</p>
+                </div>
             </div>
         </section>
 
@@ -378,8 +673,8 @@
             <h2 style="color: white; border-bottom: 2px solid white;">Ready to Explore Ultragic?</h2>
             <p style="font-size: 1.1rem; margin: 1rem 0;">Join the community and be part of an innovative programming language journey!</p>
             <div class="cta-buttons" style="justify-content: center;">
-                <a href="https://github.com/Ultimate-Rafi/Ultragic" target="_blank" class="btn btn-secondary">Star on GitHub ⭐</a>
-                <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/README.md" target="_blank" class="btn btn-secondary">Read Documentation 📖</a>
+                <a href="https://github.com/Ultimate-Rafi/Ultragic" target="_blank" class="btn btn-secondary">⭐ Star on GitHub</a>
+                <a href="https://github.com/Ultimate-Rafi/Ultragic/blob/main/CONTRIBUTORS.md" target="_blank" class="btn btn-secondary">👥 See Contributors</a>
             </div>
         </section>
     </div>
